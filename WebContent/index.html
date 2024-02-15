@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reg Form</title>
+<style>
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  .error {
+    color: #e74c3c;
+    display: none;
+  }
+
+  input[type="submit"],
+  input[type="reset"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover,
+  input[type="reset"]:hover {
+    background-color: #2980b9;
+  }
+
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+</style>
+</head>
+<body>
+  <center><h1>Registration Form</h1></center>
+  <hr />
+  <form action="Signup" method="post">
+    <h2>Sign Up</h2>
+    <table>
+      <tr>
+        <td><label>First Name:</label></td>
+        <td>
+          <input type="text" name="fname" placeholder="Enter your first name" />
+          <span class="error" id="fname-error">*Please enter your first name.</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Last Name:</label></td>
+        <td>
+          <input type="text" name="lname" placeholder="Enter your last name" />
+          <span class="error" id="lname-error">*Please enter your last name.</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Address:</label></td>
+        <td>
+          <textarea name="address" placeholder="Please enter your address"></textarea>
+          <span class="error" id="address-error">*Please enter your address.</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Gender:</label></td>
+        <td>
+          <input checked="true" type="radio" name="gender" value="male" />Male
+          <input type="radio" name="gender" value="female" />Female
+          <span class="error" id="gender-error">*Please select your gender</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Email Id:</label></td>
+        <td>
+          <input type="text" name="email" placeholder="example@gmail.com" />
+          <span class="error" id="email-error">*Please enter a valid email address.</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Mobile:</label></td>
+        <td>
+          <input type="text" name="mobile" />
+          <span class="error" id="mobile-error">*Please enter a valid 10-digit mobile number.</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" name="submit" value="Submit" />
+          <input type="reset" name="reset" value="Reset" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

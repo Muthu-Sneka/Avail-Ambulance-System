@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Response Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('shree.jpeg'); /* Specify the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the message container */
+        .message-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Style for the notification icon */
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            background-image: url('notification-icon.png'); /* Specify the path to your notification icon */
+            background-size: cover;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h1>Message from the hospital:</h1>
+        <div id="message"></div>
+        <!-- Notification icon -->
+        <div class="notification-icon"></div>
+    </div>
+
+    <script>
+        // Function to get the URL parameter by name
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the message parameter from the URL and display it
+        var message = getParameterByName('message');
+        if (message) {
+            document.getElementById('message').innerText = message;
+            // Show a notification icon
+            showNotification();
+        }
+
+        // Function to show a notification
+        function showNotification() {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                var notification = new Notification('New Message', {
+                    icon: 'notification-icon.png', // Specify the path to your notification icon
+                    body: 'You have a new message from the user.'
+                });
+
+                // Automatically close the notification after 5 seconds
+                setTimeout(function() {
+                    notification.close();
+                }, 5000);
+            }
+        }
+
+        // Request permission for notifications if not already granted
+        if ('Notification' in window && Notification.permission !== 'granted') {
+            Notification.requestPermission();
+        }
+    </script>
+</body>
+</html>
